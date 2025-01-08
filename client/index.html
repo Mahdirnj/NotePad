@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Notes</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<div class="app-container">
+    <!-- صفحه لاگین -->
+    <div class="login-section" id="login-section">
+        <h1>Welcome to <span>My Notes</span></h1>
+        <input type="email" placeholder="Email" id="email" />
+        <input type="password" placeholder="Password" id="password" />
+        <div class="login-buttons">
+            <button id="loginBtn" class="btn">Login</button>
+            <button id="registerBtn" class="btn alt">Register</button>
+            <button id="googleSignInBtn" class="btn google">Sign in with Google</button>
+        </div>
+    </div>
+
+    <!-- صفحه نمایش نوت‌ها -->
+    <div class="notes-section" id="notes-section">
+        <h1>Your Notes</h1>
+        <button id="addNoteBtn" class="btn add-btn">Add Note</button>
+        <div id="notes-list" class="notes-list"></div>
+    </div>
+
+    <!-- صفحه ویرایش نوت -->
+    <div class="note-edit-section" id="note-edit-section">
+        <h1>Create or Edit Note</h1>
+        <input type="text" id="noteTitle" placeholder="Title" />
+        <textarea id="noteBody" placeholder="Write your note here..."></textarea>
+        <button id="saveNoteBtn" class="btn">Save Note</button>
+    </div>
+
+    <button id="logoutBtn" class="btn logout-btn">Logout</button>
+</div>
+
+<script src="https://www.gstatic.com/firebasejs/9.17.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.17.2/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.17.2/firebase-firestore-compat.js"></script>
+
+<script src="app.js"></script>
+</body>
+</html>
