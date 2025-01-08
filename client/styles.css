@@ -1,0 +1,384 @@
+:root {
+    --primary-color: #4e54c8;
+    --secondary-color: #8f94fb;
+    --text-color: #333;
+    --bg-color: #f4f4f4;
+    --form-bg: #ffffff;
+    --input-bg: #e8e8e8;
+    --input-border: #ddd;
+    --input-focus: rgba(66, 153, 225, 0.5);
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    color: var(--text-color);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.container, .notes-container {
+    background-color: var(--form-bg);
+    border-radius: 10px;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    overflow: hidden;
+    width: 100%;
+    max-width: 400px;
+}
+
+.notes-container {
+    max-width: 1000px;
+    display: flex;
+    height: 80vh;
+}
+
+.form-container, .sidebar, .main-content {
+    padding: 2rem;
+}
+
+h2 {
+    text-align: center;
+    color: var(--primary-color);
+}
+
+.input-group {
+    position: relative;
+    margin-bottom: 1.5rem;
+}
+
+.input-group i {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    color: #999;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid var(--input-border);
+    border-radius: 8px;
+    font-size: 16px;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    margin-bottom: 15px;
+}
+
+textarea {
+    min-height: 100px;
+    resize: none;
+    overflow-y: hidden;
+}
+
+.btn {
+    width: 100%;
+    padding: 10px;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: var(--secondary-color);
+}
+
+.social-login {
+    margin-top: 1rem;
+}
+
+.google-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 10px;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.google-btn img {
+    width: 45px;
+    height: 16px;
+    margin-right: 7px;
+}
+
+.toggle-form {
+    text-align: center;
+    margin-top: 1rem;
+}
+
+.theme-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+}
+
+.theme-toggle label {
+    display: inline-block;
+    width: 50px;
+    height: 26px;
+    background-color: #ccc;
+    border-radius: 13px;
+    position: relative;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.theme-toggle label::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: white;
+    top: 3px;
+    left: 3px;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+#theme-switch:checked + label {
+    background-color: var(--primary-color);
+}
+
+#theme-switch:checked + label::after {
+    transform: translateX(24px);
+}
+
+
+#theme-switch {
+    display: none;
+}
+
+.theme-toggle label i {
+    font-size: 16px;
+}
+
+.theme-toggle label .fa-sun {
+    color: #f39c12;
+}
+
+.theme-toggle label .fa-moon {
+    color: #34495e;
+}
+
+
+.sidebar {
+    width: 30%;
+    border-right: 1px solid #ddd;
+    overflow-y: auto;
+}
+
+.main-content {
+    width: 70%;
+    overflow-y: auto;
+}
+
+.note-item {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    cursor: pointer;
+    animation: slideIn 0.3s ease-out;
+}
+
+.note-item:hover {
+    background-color: var(--input-bg);
+}
+
+.note-title {
+    font-weight: bold;
+}
+
+.note-summary {
+    font-size: 0.9em;
+    color: #666;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.4);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.modal.show {
+    display: block;
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-content {
+    background-color: var(--form-bg);
+    margin: 15% auto;
+    padding: 20px;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 500px;
+    transform: translateY(-20px);
+    transition: transform 0.3s ease;
+}
+
+.modal.show .modal-content {
+    transform: translateY(0);
+}
+
+.btn-secondary {
+    background-color: #ccc;
+    color: #333;
+    margin-top: 10px;
+}
+
+.btn-secondary:hover {
+    background-color: #bbb;
+}
+
+.add-note {
+    margin-bottom: 1rem;
+}
+
+#note-display {
+    padding: 1rem;
+}
+
+.note-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 1rem;
+}
+
+.note-actions button {
+    margin-left: 0.5rem;
+}
+
+.btn-edit, .btn-delete {
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 10px;
+}
+
+.btn-edit {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.btn-edit:hover {
+    background-color: #45a049;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.btn-delete {
+    background-color: #f44336;
+    color: white;
+}
+
+.btn-delete:hover {
+    background-color: #d32f2f;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.btn-edit svg, .btn-delete svg {
+    width: 16px;
+    height: 16px;
+    margin-right: 8px;
+    transition: transform 0.3s ease;
+}
+
+.btn-edit:hover svg, .btn-delete:hover svg {
+    transform: rotate(15deg);
+}
+
+
+/* Dark theme */
+body.dark-theme {
+    --text-color: #f4f4f4;
+    --bg-color: #333;
+    --form-bg: #2c3e50;
+    --input-bg: #34495e;
+    --input-border: #4a5568;
+}
+
+body.dark-theme .container,
+body.dark-theme .notes-container,
+body.dark-theme .modal-content {
+    background-color: var(--form-bg);
+    color: var(--text-color);
+}
+
+body.dark-theme input,
+body.dark-theme textarea {
+    background-color: var(--input-bg);
+    color: var(--text-color);
+    border-color: var(--input-border);
+}
+
+body.dark-theme input::placeholder,
+body.dark-theme textarea::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+body.dark-theme .note-item:hover {
+    background-color: #3a4a5e;
+}
+
+body.dark-theme .note-summary {
+    color: #bbb;
+}
+
+body.dark-theme .btn-secondary {
+    background-color: #4a5568;
+    color: #f4f4f4;
+}
+
+body.dark-theme .btn-secondary:hover {
+    background-color: #5a6778;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideIn {
+    from { transform: translateY(-20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+
+input:focus, textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px var(--input-focus);
+}
+

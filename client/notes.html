@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Notes | Notepad Web App</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://kit.fontawesome.com/your-fontawesome-kit.js" crossorigin="anonymous"></script>
+</head>
+<body>
+<div class="notes-container">
+  <div class="sidebar">
+    <h2>My Notes</h2>
+    <button id="add-note" class="btn add-note">
+      <i class="fas fa-plus"></i> Add Note
+    </button>
+    <div id="note-list"></div>
+  </div>
+  <div class="main-content">
+    <div id="note-display"></div>
+  </div>
+</div>
+<div id="add-note-modal" class="modal">
+  <div class="modal-content">
+    <h2>Add New Note</h2>
+    <input type="text" id="note-title" placeholder="Title" required>
+    <textarea id="note-content" placeholder="Note content" required></textarea>
+    <button id="save-note" class="btn">Add Note</button>
+    <button id="close-modal" class="btn btn-secondary">Cancel</button>
+  </div>
+</div>
+<div class="theme-toggle">
+  <input type="checkbox" id="theme-switch">
+  <label for="theme-switch">
+    <i class="fas fa-sun"></i>
+    <i class="fas fa-moon"></i>
+  </label>
+</div>
+<script src="notes.js"></script>
+</body>
+</html>
+

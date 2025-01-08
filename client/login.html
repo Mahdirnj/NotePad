@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | Notepad Web App</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://kit.fontawesome.com/your-fontawesome-kit.js" crossorigin="anonymous"></script>
+</head>
+<body>
+<div class="container">
+    <div class="form-container">
+        <h2>Welcome Back</h2>
+        <form id="login-form">
+            <div class="input-group">
+                <i class="fas fa-envelope"></i>
+                <input type="email" id="email" placeholder="Email" required>
+            </div>
+            <div class="input-group">
+                <i class="fas fa-lock"></i>
+                <input type="password" id="password" placeholder="Password" required>
+            </div>
+            <button type="submit" class="btn">Login</button>
+        </form>
+        <div class="social-login">
+            <button class="google-btn">
+                <img src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png" alt="Google logo">
+                Sign in with Google
+            </button>
+        </div>
+        <p class="toggle-form">Don't have an account? <a href="signup.html">Sign up</a></p>
+    </div>
+</div>
+<div class="theme-toggle">
+    <input type="checkbox" id="theme-switch">
+    <label for="theme-switch">
+        <i class="fas fa-sun"></i>
+        <i class="fas fa-moon"></i>
+    </label>
+</div>
+<script src="login.js"></script>
+</body>
+</html>
+

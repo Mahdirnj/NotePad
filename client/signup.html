@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up | Notepad Web App</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://kit.fontawesome.com/your-fontawesome-kit.js" crossorigin="anonymous"></script>
+</head>
+<body>
+<div class="container">
+    <div class="form-container">
+        <h2>Create Account</h2>
+        <form id="signup-form">
+            <div class="input-group">
+                <i class="fas fa-user"></i>
+                <input type="text" id="name" placeholder="Full Name" required>
+            </div>
+            <div class="input-group">
+                <i class="fas fa-envelope"></i>
+                <input type="email" id="email" placeholder="Email" required>
+            </div>
+            <div class="input-group">
+                <i class="fas fa-lock"></i>
+                <input type="password" id="password" placeholder="Password" required>
+            </div>
+            <button type="submit" class="btn">Sign Up</button>
+        </form>
+        <div class="social-login">
+            <button class="google-btn">
+                <img src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png" alt="Google logo">
+                Sign up with Google
+            </button>
+        </div>
+        <p class="toggle-form">Already have an account? <a href="login.html">Login</a></p>
+    </div>
+</div>
+<div class="theme-toggle">
+    <input type="checkbox" id="theme-switch">
+    <label for="theme-switch">
+        <i class="fas fa-sun"></i>
+        <i class="fas fa-moon"></i>
+    </label>
+</div>
+<script src="signup.js"></script>
+</body>
+</html>
+
