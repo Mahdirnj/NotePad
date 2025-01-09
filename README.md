@@ -1,4 +1,4 @@
-# My Notes - Web Application
+# NotePad - Web Application
 
 A modern, responsive web application for creating and managing personal notes with user authentication. Built with vanilla JavaScript and Firebase, featuring a clean and intuitive interface with dark/light mode support.
 
@@ -37,5 +37,4 @@ A modern, responsive web application for creating and managing personal notes wi
 
 1. Clone the repository
 ```bash
-git clone https://github.com/your-username/my-notes.git
-cd my-notes
+git clone https://github.com/Mahdirnj/NotePad.git
