@@ -1,6 +1,10 @@
+import { auth, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from './firebase-config.js';
+
 document.addEventListener('DOMContentLoaded', () => {
     const themeSwitch = document.getElementById('theme-switch');
     const body = document.body;
+    const loginForm = document.getElementById('login-form');
+    const googleSignInBtn = document.getElementById('google-signin');
 
     // Check for saved theme preference or default to 'light'
     const currentTheme = localStorage.getItem('theme') || 'light';
@@ -10,26 +14,56 @@ document.addEventListener('DOMContentLoaded', () => {
     // Theme toggle functionality
     themeSwitch.addEventListener('change', () => {
         if (themeSwitch.checked) {
-            body.classList.replace('light-theme', 'dark-theme');
+            body.classList.add('dark-theme');
+            body.classList.remove('light-theme');
             localStorage.setItem('theme', 'dark');
         } else {
-            body.classList.replace('dark-theme', 'light-theme');
+            body.classList.add('light-theme');
+            body.classList.remove('dark-theme');
             localStorage.setItem('theme', 'light');
         }
     });
 
     // Login form submission
-    const loginForm = document.getElementById('login-form');
     loginForm.addEventListener('submit', (e) => {
         e.preventDefault();
-        const email = document.getElementById('email').value;
-        const password = document.getElementById('password').value;
+        const email = document.getElementById('login-email').value;
+        const password = document.getElementById('login-password').value;
 
-        // Here you would typically send a request to your server to authenticate the user
-        console.log('Login attempt:', { email, password });
+        signInWithEmailAndPassword(auth, email, password)
+            .then((userCredential) => {
+                // Signed in
+                const user = userCredential.user;
+                console.log('User signed in:', user);
+                window.location.href = 'notes.html';
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                console.error('Login error:', errorCode, errorMessage);
+                alert('Login failed. Please check your credentials and try again.');
+            });
+    });
 
-        // For demo purposes, we'll just redirect to the notes page
-        window.location.href = 'notes.html';
+    // Google Sign-In
+    googleSignInBtn.addEventListener('click', () => {
+        const provider = new GoogleAuthProvider();
+        signInWithPopup(auth, provider)
+            .then((result) => {
+                // This gives you a Google Access Token. You can use it to access the Google API.
+                const credential = GoogleAuthProvider.credentialFromResult(result);
+                const token = credential.accessToken;
+                // The signed-in user info.
+                const user = result.user;
+                console.log('User signed in with Google:', user);
+                window.location.href = 'notes.html';
+            }).catch((error) => {
+            // Handle Errors here.
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            console.error('Google Sign-In error:', errorCode, errorMessage);
+            alert('Google Sign-In failed. Please try again.');
+        });
     });
 });
 

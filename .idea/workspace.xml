@@ -5,18 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8dcdcbe3-10c3-4dde-84ac-f688d9aef583" name="Changes" comment="Updated">
-      <change afterPath="$PROJECT_DIR$/client/login.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/login.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/notes.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/notes.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/script.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/signup.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/signup.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/styles.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/firebase-config.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/style.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/client/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/login.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/login.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/notes.html" beforeDir="false" afterPath="$PROJECT_DIR$/client/notes.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/notes.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/notes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/signup.html" beforeDir="false" afterPath="$PROJECT_DIR$/client/signup.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/signup.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/signup.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/styles.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,11 +31,23 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="main" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "Mahdirnj"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/Mahdirnj/NotePad.git",
+    "accountId": "3aaee1b7-0385-4e45-b06a-1cb63a7244a5"
+  }
+}]]></component>
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="CurrentFile" />
   </component>
@@ -61,6 +70,7 @@
     "JavaScript Debug.Login.html.executor": "Run",
     "JavaScript Debug.edit-note.html.executor": "Run",
     "JavaScript Debug.index.html.executor": "Run",
+    "JavaScript Debug.login.html.executor": "Run",
     "JavaScript Debug.notes-list.html.executor": "Run",
     "JavaScript Debug.notes.html.executor": "Run",
     "JavaScript Debug.signup.html.executor": "Run",
@@ -68,7 +78,7 @@
     "Node.js.signup.js.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "test1",
+    "git-widget-placeholder": "firebase-test",
     "ignore.virus.scanning.warn.message": "true",
     "last_opened_file_path": "C:/Users/mahdi/Desktop/narm2",
     "node.js.detected.package.eslint": "true",
@@ -104,6 +114,7 @@
       <workItem from="1736320646288" duration="1227000" />
       <workItem from="1736321890816" duration="8999000" />
       <workItem from="1736351891926" duration="6626000" />
+      <workItem from="1736401598772" duration="3765000" />
     </task>
     <task id="LOCAL-00001" summary="Updated">
       <option name="closed" value="true" />

@@ -14,18 +14,18 @@
         <form id="login-form">
             <div class="input-group">
                 <i class="fas fa-envelope"></i>
-                <input type="email" id="email" placeholder="Email" required>
+                <input type="email" id="login-email" placeholder="Email" required>
             </div>
             <div class="input-group">
                 <i class="fas fa-lock"></i>
-                <input type="password" id="password" placeholder="Password" required>
+                <input type="password" id="login-password" placeholder="Password" required>
             </div>
             <button type="submit" class="btn">Login</button>
         </form>
         <div class="social-login">
-            <button class="google-btn">
-                <img src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png" alt="Google logo">
-                Sign in with Google
+            <button id="google-signin" class="google-btn">
+                <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google logo">
+                <span>Sign in with Google</span>
             </button>
         </div>
         <p class="toggle-form">Don't have an account? <a href="signup.html">Sign up</a></p>
@@ -38,7 +38,7 @@
         <i class="fas fa-moon"></i>
     </label>
 </div>
-<script src="login.js"></script>
+<script type="module" src="login.js"></script>
 </body>
 </html>
 
