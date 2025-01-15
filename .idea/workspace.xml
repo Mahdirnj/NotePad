@@ -4,8 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8dcdcbe3-10c3-4dde-84ac-f688d9aef583" name="Changes" comment="Visual updated and duplicate fixed">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="8dcdcbe3-10c3-4dde-84ac-f688d9aef583" name="Changes" comment="API conflict fixed">
       <change beforePath="$PROJECT_DIR$/client/client/firebase-config.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/client/firebase-config.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -112,7 +111,7 @@
       <workItem from="1736401598772" duration="3765000" />
       <workItem from="1736406525063" duration="6549000" />
       <workItem from="1736790724662" duration="119000" />
-      <workItem from="1736977270440" duration="2370000" />
+      <workItem from="1736977270440" duration="2542000" />
     </task>
     <task id="LOCAL-00001" summary="Updated">
       <option name="closed" value="true" />
@@ -146,7 +145,15 @@
       <option name="project" value="LOCAL" />
       <updated>1736979274088</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="API conflict fixed">
+      <option name="closed" value="true" />
+      <created>1736979703303</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1736979703303</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -167,6 +174,7 @@
     <MESSAGE value="Updated" />
     <MESSAGE value="Visual updated" />
     <MESSAGE value="Visual updated and duplicate fixed" />
-    <option name="LAST_COMMIT_MESSAGE" value="Visual updated and duplicate fixed" />
+    <MESSAGE value="API conflict fixed" />
+    <option name="LAST_COMMIT_MESSAGE" value="API conflict fixed" />
   </component>
 </project>
