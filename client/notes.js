@@ -17,6 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let notes = [];
     let currentUser = null;
+    let currentNoteId = null;
 
     auth.onAuthStateChanged(async (user) => {
         if (user) {
@@ -29,12 +30,11 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Check for saved theme preference or default to 'light'
+    // Theme toggle functionality
     const currentTheme = localStorage.getItem('theme') || 'light';
     body.classList.add(currentTheme + '-theme');
     themeSwitch.checked = currentTheme === 'dark';
 
-    // Theme toggle functionality
     themeSwitch.addEventListener('change', () => {
         if (themeSwitch.checked) {
             body.classList.replace('light-theme', 'dark-theme');
@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Open modal
+    // Open modal with animation
     function openModal() {
         modal.style.display = 'block';
         setTimeout(() => {
@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 10);
     }
 
-    // Close modal
+    // Close modal with animation
     function closeModal() {
         modal.classList.remove('show');
         setTimeout(() => {
@@ -61,7 +61,11 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 300);
     }
 
-    addNoteBtn.addEventListener('click', openModal);
+    addNoteBtn.addEventListener('click', () => {
+        currentNoteId = null;
+        clearInputs();
+        openModal();
+    });
     closeModalBtn.addEventListener('click', closeModal);
 
     // Function to clear inputs
@@ -91,23 +95,34 @@ document.addEventListener('DOMContentLoaded', () => {
     // Save note
     const saveNote = async () => {
         const title = document.getElementById('note-title').value.trim();
-        const content = document.getElementById('note-content').value.trim();
+        const content = document.getElementById('note-content').value;
         if (title && content && currentUser) {
-            const newNote = {
+            const noteData = {
                 title,
                 content,
                 userId: currentUser.uid,
-                createdAt: new Date()
+                updatedAt: new Date()
             };
             try {
-                const docRef = await addDoc(collection(db, "notes"), newNote);
-                newNote.id = docRef.id;
-                notes.push(newNote);
+                if (currentNoteId) {
+                    // Update existing note
+                    await updateDoc(doc(db, "notes", currentNoteId), noteData);
+                    const index = notes.findIndex(n => n.id === currentNoteId);
+                    if (index !== -1) {
+                        notes[index] = { ...notes[index], ...noteData };
+                    }
+                } else {
+                    // Add new note
+                    noteData.createdAt = new Date();
+                    const docRef = await addDoc(collection(db, "notes"), noteData);
+                    notes.push({ id: docRef.id, ...noteData });
+                }
                 renderNoteList();
                 closeModal();
                 clearInputs();
+                currentNoteId = null;
             } catch (error) {
-                console.error("Error adding document: ", error);
+                console.error("Error saving document: ", error);
                 alert('Failed to save the note. Please try again.');
             }
         } else {
@@ -138,8 +153,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function displayNote(note) {
         noteDisplay.innerHTML = `
+            <button class="close-note-btn">&times;</button>
             <h2>${note.title}</h2>
-            <p>${note.content}</p>
+            <p style="white-space: pre-wrap;">${note.content}</p>
             <div class="note-actions">
                 <button class="btn-edit" onclick="editNote('${note.id}')">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -159,42 +175,30 @@ document.addEventListener('DOMContentLoaded', () => {
                 </button>
             </div>
         `;
+        noteDisplay.classList.remove('show');
+        void noteDisplay.offsetWidth; // Trigger reflow
+        noteDisplay.classList.add('show');
+
+        const closeNoteBtn = noteDisplay.querySelector('.close-note-btn');
+        closeNoteBtn.addEventListener('click', closeCurrentNote);
     }
 
-    window.editNote = async (id) => {
+    function closeCurrentNote() {
+        noteDisplay.classList.add('closing-note');
+        noteDisplay.addEventListener('animationend', () => {
+            noteDisplay.innerHTML = '';
+            noteDisplay.classList.remove('closing-note', 'show');
+        }, { once: true });
+    }
+
+    window.editNote = (id) => {
         const note = notes.find(n => n.id === id);
         if (note) {
+            currentNoteId = id;
             document.getElementById('note-title').value = note.title;
             document.getElementById('note-content').value = note.content;
             autoResizeTextarea(document.getElementById('note-content'));
             openModal();
-
-            // Update the save button to handle edits
-            saveNoteBtn.onclick = async () => {
-                const updatedTitle = document.getElementById('note-title').value.trim();
-                const updatedContent = document.getElementById('note-content').value.trim();
-                if (updatedTitle && updatedContent) {
-                    try {
-                        await updateDoc(doc(db, "notes", id), {
-                            title: updatedTitle,
-                            content: updatedContent,
-                            updatedAt: new Date()
-                        });
-                        note.title = updatedTitle;
-                        note.content = updatedContent;
-                        renderNoteList();
-                        displayNote(note);
-                        closeModal();
-                        // Reset saveNoteBtn onclick to its original function
-                        saveNoteBtn.onclick = saveNote;
-                    } catch (error) {
-                        console.error("Error updating document: ", error);
-                        alert('Failed to update the note. Please try again.');
-                    }
-                } else {
-                    alert('Please enter both a title and content for the note.');
-                }
-            };
         }
     };
 
@@ -206,13 +210,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 await deleteDoc(doc(db, "notes", id));
                 notes = notes.filter(n => n.id !== id);
                 renderNoteList();
-                noteDisplay.innerHTML = '';
+                closeCurrentNote();
             });
         }
     };
 
     logoutBtn.addEventListener('click', () => {
-        logoutBtn.classList.add('logout-animation');
+        body.classList.add('fade-out');
         setTimeout(() => {
             signOut(auth).then(() => {
                 console.log('User signed out successfully');
@@ -225,4 +229,3 @@ document.addEventListener('DOMContentLoaded', () => {
 
     renderNoteList();
 });
-
