@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
 :root {
     --primary-color: #4e54c8;
     --secondary-color: #8f94fb;
@@ -6,26 +8,26 @@
     --form-bg: #ffffff;
     --input-bg: #e8e8e8;
     --input-border: #ddd;
-    --input-focus: rgba(66, 153, 225, 0.5);
+    --input-focus: rgba(78, 84, 200, 0.2);
 }
 
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: 'Poppins', sans-serif;
     margin: 0;
     padding: 0;
-    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
     color: var(--text-color);
     min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: background-color 0.3s ease, color 0.3s ease;
+    transition: opacity 0.5s ease;
 }
 
 .container, .notes-container {
     background-color: var(--form-bg);
-    border-radius: 10px;
-    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
     overflow: hidden;
     width: 100%;
     max-width: 400px;
@@ -34,8 +36,8 @@ body {
 .notes-container {
     max-width: 1000px;
     display: flex;
-    height: 100vh;
-    overflow: hidden;
+    height: 90vh;
+    margin: 5vh auto;
 }
 
 .form-container, .sidebar, .main-content {
@@ -45,6 +47,7 @@ body {
 h2 {
     text-align: center;
     color: var(--primary-color);
+    font-weight: 600;
 }
 
 .input-group {
@@ -55,46 +58,49 @@ h2 {
 .input-group i {
     position: absolute;
     top: 50%;
-    left: 10px;
+    left: 15px;
     transform: translateY(-50%);
     color: #999;
 }
 
 input, textarea {
     width: 100%;
-    padding: 12px 15px;
+    padding: 12px 15px 12px 40px;
     border: 2px solid var(--input-border);
-    border-radius: 8px;
+    border-radius: 10px;
     font-size: 16px;
+    font-family: 'Poppins', sans-serif;
     box-sizing: border-box;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    transition: all 0.3s ease;
     margin-bottom: 15px;
 }
 
 textarea {
     min-height: 100px;
-    resize: none;
-    overflow-y: hidden;
+    resize: vertical;
 }
 
 .btn {
     width: 100%;
-    padding: 10px;
+    padding: 12px;
     background-color: var(--primary-color);
     color: white;
     border: none;
-    border-radius: 5px;
+    border-radius: 10px;
     font-size: 16px;
+    font-weight: 500;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: all 0.3s ease;
 }
 
 .btn:hover {
     background-color: var(--secondary-color);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
 }
 
 .social-login {
-    margin-top: 1rem;
+    margin-top: 1.5rem;
 }
 
 .google-btn {
@@ -102,11 +108,12 @@ textarea {
     align-items: center;
     justify-content: center;
     width: 100%;
-    padding: 10px;
+    padding: 12px;
     background-color: white;
     border: 1px solid #ddd;
-    border-radius: 5px;
+    border-radius: 10px;
     font-size: 16px;
+    font-weight: 500;
     cursor: pointer;
     transition: all 0.3s ease;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
@@ -114,24 +121,24 @@ textarea {
 
 .google-btn:hover {
     background-color: #f8f8f8;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
     transform: translateY(-2px);
 }
 
 .google-btn img {
-    width: 18px;
-    height: 18px;
+    width: 20px;
+    height: 20px;
     margin-right: 10px;
 }
 
 .google-btn span {
     color: #757575;
-    font-weight: 500;
 }
 
 .toggle-form {
     text-align: center;
-    margin-top: 1rem;
+    margin-top: 1.5rem;
+    font-size: 14px;
 }
 
 .theme-toggle {
@@ -142,10 +149,10 @@ textarea {
 
 .theme-toggle label {
     display: inline-block;
-    width: 50px;
-    height: 26px;
+    width: 60px;
+    height: 34px;
     background-color: #ccc;
-    border-radius: 13px;
+    border-radius: 17px;
     position: relative;
     cursor: pointer;
     transition: background-color 0.3s ease;
@@ -154,12 +161,12 @@ textarea {
 .theme-toggle label::after {
     content: '';
     position: absolute;
-    width: 20px;
-    height: 20px;
+    width: 26px;
+    height: 26px;
     border-radius: 50%;
     background-color: white;
-    top: 3px;
-    left: 3px;
+    top: 4px;
+    left: 4px;
     transition: transform 0.3s ease, background-color 0.3s ease;
 }
 
@@ -168,9 +175,8 @@ textarea {
 }
 
 #theme-switch:checked + label::after {
-    transform: translateX(24px);
+    transform: translateX(26px);
 }
-
 
 #theme-switch {
     display: none;
@@ -178,16 +184,20 @@ textarea {
 
 .theme-toggle label i {
     font-size: 16px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
 .theme-toggle label .fa-sun {
+    left: 10px;
     color: #f39c12;
 }
 
 .theme-toggle label .fa-moon {
+    right: 10px;
     color: #34495e;
 }
-
 
 .sidebar {
     width: 300px;
@@ -205,10 +215,10 @@ textarea {
 
 .note-item {
     cursor: pointer;
-    padding: 10px;
-    margin-bottom: 10px;
+    padding: 15px;
+    margin-bottom: 15px;
     background-color: var(--input-bg);
-    border-radius: 5px;
+    border-radius: 10px;
     transition: all 0.3s ease;
     transform: translateY(0);
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
@@ -217,11 +227,11 @@ textarea {
 .note-item:hover {
     background-color: var(--input-border);
     transform: translateY(-3px);
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
 }
 
 .note-title {
-    font-weight: bold;
+    font-weight: 600;
     margin-bottom: 5px;
 }
 
@@ -251,16 +261,18 @@ textarea {
 .modal-content {
     background-color: var(--form-bg);
     margin: 15% auto;
-    padding: 20px;
-    border-radius: 5px;
+    padding: 30px;
+    border-radius: 15px;
     width: 80%;
     max-width: 500px;
-    transform: translateY(-50px);
-    transition: transform 0.3s ease;
+    transform: scale(0.8);
+    opacity: 0;
+    transition: all 0.3s ease;
 }
 
 .modal.show .modal-content {
-    transform: translateY(0);
+    transform: scale(1);
+    opacity: 1;
 }
 
 .btn-secondary {
@@ -274,37 +286,45 @@ textarea {
 }
 
 .add-note {
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
 }
 
 #note-display {
     background-color: var(--form-bg);
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.3s ease;
+}
+
+#note-display.show {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .note-actions {
     display: flex;
     justify-content: flex-end;
-    margin-top: 10px;
+    margin-top: 20px;
 }
 
 .note-actions button {
-    margin-left: 0.5rem;
+    margin-left: 10px;
 }
 
 .btn-edit, .btn-delete {
-    padding: 8px 16px;
-    border-radius: 20px;
+    padding: 10px 20px;
+    border-radius: 25px;
     font-size: 14px;
+    font-weight: 500;
     cursor: pointer;
     transition: all 0.3s ease;
     border: none;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    margin-left: 10px;
 }
 
 .btn-edit {
@@ -315,7 +335,7 @@ textarea {
 .btn-edit:hover {
     background-color: #45a049;
     transform: translateY(-2px);
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
 .btn-delete {
@@ -326,7 +346,7 @@ textarea {
 .btn-delete:hover {
     background-color: #d32f2f;
     transform: translateY(-2px);
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
 .btn-edit svg, .btn-delete svg {
@@ -340,11 +360,10 @@ textarea {
     transform: rotate(15deg);
 }
 
-
 /* Dark theme */
 body.dark-theme {
     --text-color: #f4f4f4;
-    --bg-color: #333;
+    --bg-color: #1a1a1a;
     --form-bg: #2c3e50;
     --input-bg: #34495e;
     --input-border: #4a5568;
@@ -409,39 +428,33 @@ input:focus, textarea:focus {
 
 .logout-btn {
     margin-top: 20px;
-}
-
-#note-title, #note-content {
-    width: 100%;
-    margin-bottom: 10px;
-}
-
-#note-content {
-    min-height: 100px;
-}
-
-.logout-btn {
-    margin-top: 20px;
     transition: all 0.3s ease;
 }
 
 .logout-btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
-@keyframes fadeOutRotate {
+@keyframes fadeOutPage {
     0% {
         opacity: 1;
-        transform: rotate(0deg);
     }
     100% {
         opacity: 0;
-        transform: rotate(90deg);
     }
 }
 
-.logout-animation {
-    animation: fadeOutRotate 0.5s ease-out forwards;
+.fade-out {
+    animation: fadeOutPage 0.5s ease-out forwards;
+}
+
+#note-title, #note-content {
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+#note-content {
+    min-height: 150px;
 }
 

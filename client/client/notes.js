@@ -29,12 +29,11 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Check for saved theme preference or default to 'light'
+    // Theme toggle functionality
     const currentTheme = localStorage.getItem('theme') || 'light';
     body.classList.add(currentTheme + '-theme');
     themeSwitch.checked = currentTheme === 'dark';
 
-    // Theme toggle functionality
     themeSwitch.addEventListener('change', () => {
         if (themeSwitch.checked) {
             body.classList.replace('light-theme', 'dark-theme');
@@ -45,7 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Open modal
+    // Open modal with animation
     function openModal() {
         modal.style.display = 'block';
         setTimeout(() => {
@@ -53,7 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 10);
     }
 
-    // Close modal
+    // Close modal with animation
     function closeModal() {
         modal.classList.remove('show');
         setTimeout(() => {
@@ -159,6 +158,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 </button>
             </div>
         `;
+        noteDisplay.classList.remove('show');
+        void noteDisplay.offsetWidth; // Trigger reflow
+        noteDisplay.classList.add('show');
     }
 
     window.editNote = async (id) => {
@@ -212,7 +214,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     logoutBtn.addEventListener('click', () => {
-        logoutBtn.classList.add('logout-animation');
+        body.classList.add('fade-out');
         setTimeout(() => {
             signOut(auth).then(() => {
                 console.log('User signed out successfully');
